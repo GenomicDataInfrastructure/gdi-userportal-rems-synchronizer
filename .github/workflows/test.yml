@@ -6,7 +6,6 @@ name: Run Tests
 
 on: push
 
-# TODO add here any kind of test you may need
 jobs:
   test:
     runs-on: ubuntu-latest

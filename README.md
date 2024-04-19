@@ -4,17 +4,17 @@ SPDX-FileCopyrightText: 2024 PNED G.I.E.
 SPDX-License-Identifier: CC-BY-4.0
 -->
 
-[![REUSE status](https://api.reuse.software/badge/github.com/GenomicDataInfrastructure/oss-project-template)](https://api.reuse.software/info/github.com/GenomicDataInfrastructure/oss-project-template)
-![example workflow](https://github.com/GenomicDataInfrastructure/oss-project-template/actions/workflows/main.yml/badge.svg)
-![example workflow](https://github.com/GenomicDataInfrastructure/oss-project-template/actions/workflows/test.yml/badge.svg)
-![example workflow](https://github.com/GenomicDataInfrastructure/oss-project-template/actions/workflows/release.yml/badge.svg)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=GenomicDataInfrastructure_oss-project-template&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=GenomicDataInfrastructure_oss-project-template)
-[![GitHub contributors](https://img.shields.io/github/contributors/GenomicDataInfrastructure/oss-project-template)](https://github.com/GenomicDataInfrastructure/oss-project-template/graphs/contributors)
+[![REUSE status](https://api.reuse.software/badge/github.com/GenomicDataInfrastructure/gdi-userportal-rems-synchronizer)](https://api.reuse.software/info/github.com/GenomicDataInfrastructure/gdi-userportal-rems-synchronizer)
+![example workflow](https://github.com/GenomicDataInfrastructure/gdi-userportal-rems-synchronizer/actions/workflows/main.yml/badge.svg)
+![example workflow](https://github.com/GenomicDataInfrastructure/gdi-userportal-rems-synchronizer/actions/workflows/test.yml/badge.svg)
+![example workflow](https://github.com/GenomicDataInfrastructure/gdi-userportal-rems-synchronizer/actions/workflows/release.yml/badge.svg)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=GenomicDataInfrastructure_gdi-userportal-rems-synchronizer&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=GenomicDataInfrastructure_gdi-userportal-rems-synchronizer)
+[![GitHub contributors](https://img.shields.io/github/contributors/GenomicDataInfrastructure/gdi-userportal-rems-synchronizer)](https://github.com/GenomicDataInfrastructure/gdi-userportal-rems-synchronizer/graphs/contributors)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
 
-# oss-project-template
+# gdi-userportal-rems-synchronizer
 
-This is a OSS project template. It suggests an initial setup for a successful open-source project.
+TO BE UPDATED
 
 ## Software Development Guidelines
 
@@ -51,7 +51,7 @@ In this template, you will find jobs for [ORT](https://oss-review-toolkit.org/or
 You will need to review the existing files, after you innitialised you project with this template.
 
 - Search for TODO and replace dummy content by the correct value (e.g. links and repository names).
-- Replace all references of `GenomicDataInfrastructure/oss-project-template` by your project repository.
+- Replace all references of `GenomicDataInfrastructure/gdi-userportal-rems-synchronizer` by your project repository.
 - Keep `CHANGELOG.md` up to date, to reflect your deliveries.
 - Update `CONTRIBUTING.md` to your project's needs, there are sessions to be fulfilled or simply removed.
 - Update `README.md` to reflect your projects needs.

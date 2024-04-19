@@ -14,8 +14,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  # TODO Update it to your project name
-  IMAGE_NAME: ghcr.io/genomicdatainfrastructure/oss-project-template
+  IMAGE_NAME: ghcr.io/genomicdatainfrastructure/gdi-userportal-rems-synchronizer
  
 jobs:
   ort:
@@ -30,7 +29,6 @@ jobs:
           fail-on: "issues"
           run: "cache-dependencies,cache-scan-results,labels,analyzer,evaluator,advisor,reporter,upload-results"
 
-# TODO You must review how you deliver you software and adapt the following steps.
   publish-docker-image:
     runs-on: ubuntu-latest
     needs: ort
