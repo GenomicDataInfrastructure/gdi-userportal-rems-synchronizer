@@ -1,0 +1,19 @@
+# SPDX-FileCopyrightText: 2024 PNED G.I.E.
+#
+# SPDX-License-Identifier: Apache-2.0
+
+# generic
+.DS_Store
+.vagrant
+
+# code & config
+_service-provider/*
+_solr/schema.xml
+_src/*
+local/*
+.env
+venv
+
+__pycache__
+
+.vscode
