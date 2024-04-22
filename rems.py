@@ -60,9 +60,29 @@ def create_or_return_form_in_rems(
             "form/fields": [
                 {
                     "field/type": "attachment",
-                    "field/title": {"en": "Attachment 1"},
+                    "field/title": {"en": "Ethics Approval"},
                     "field/optional": False,
-                }
+                },
+                {
+                    "field/type": "attachment",
+                    "field/title": {"en": "Project Description"},
+                    "field/optional": False,
+                },
+                {
+                    "field/type": "attachment",
+                    "field/title": {"en": "Data Analysis Plan"},
+                    "field/optional": False,
+                },
+                {
+                    "field/type": "attachment",
+                    "field/title": {"en": "Funding Source"},
+                    "field/optional": True,
+                },
+                {
+                    "field/type": "attachment",
+                    "field/title": {"en": "Peer Review"},
+                    "field/optional": False,
+                },
             ],
         },
         headers=headers,
@@ -113,7 +133,8 @@ def create_or_return_resource_in_rems(
     organization_id: str, dataset_id: str, rems_base_url: str, headers: dict
 ) -> str:
     response = requests.get(
-        url=f"{rems_base_url}/api/resources?resid={dataset_id}", headers=headers
+        url=f"{rems_base_url}/api/resources?disabled=false&archived=false&resid={dataset_id}",
+        headers=headers,
     )
     if response.status_code != 200 or len(response.json()) > 1:
         raise Exception(f"Resource found failed: {response.text}")
@@ -145,7 +166,7 @@ def create_or_return_catalogue_item_in_rems(
     headers: dict,
 ) -> str:
     response = requests.get(
-        url=f"{rems_base_url}/api/catalogue-items?resource={dataset_id}",
+        url=f"{rems_base_url}/api/catalogue-items?disabled=false&archived=false&resource={dataset_id}",
         headers=headers,
     )
     if response.status_code != 200 or len(response.json()) > 1:
