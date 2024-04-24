@@ -120,6 +120,7 @@ def create_or_return_workflow_in_rems(
             "organization": {"organization/id": organization_id},
             "title": "GDI Default Workflow",
             "forms": [{"form/id": form_id}],
+            "voting": {"type": "reviewers-vote"},
         },
         headers=headers,
     )
