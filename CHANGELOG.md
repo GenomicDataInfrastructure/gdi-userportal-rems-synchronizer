@@ -24,3 +24,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 ### Security
+
+## [v1.2.0] - 2024-06-12
+
+### Added
+
+feat: add voting to workflow creation
+feat: add extra fields to default form
+feat: push workflow, catalogue items, resources and org to REMS
+chore: add .gitignore
+
+### Changed
+
+chore: move rems-synchronizer to another repository
