@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-FROM python:3.11-slim
+FROM python:3.12-slim
 
 RUN apt-get update && apt-get -y install cron
 
