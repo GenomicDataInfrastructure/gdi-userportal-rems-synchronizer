@@ -127,7 +127,7 @@ This section guides you through submitting an enhancement suggestion for GDI Use
 #### Before Submitting an Enhancement
 
 - Make sure that you are using the latest version.
-- Read the [documentation](https://TODO/) carefully and find out if the functionality is already covered, maybe by an individual configuration.
+- Read the [documentation](https://genomicdatainfrastructure.github.io/gdi-userportal-docs/) carefully and find out if the functionality is already covered, maybe by an individual configuration.
 - Perform a [search](https://github.com/GenomicDataInfrastructure/gdi-userportal-rems-synchronizer/issues) to see if the enhancement has already been suggested. If it has, add a comment to the existing issue instead of opening a new one.
 - Find out whether your idea fits with the scope and aims of the project. It's up to you to make a strong case to convince the project's developers of the merits of this feature. Keep in mind that we want features that will be useful to the majority of our users and not just a small subset. If you're just targeting a minority of users, consider writing an add-on/plugin library.
 
@@ -147,31 +147,51 @@ Enhancement suggestions are tracked as [GitHub issues](https://github.com/Genomi
 
 ### Your First Code Contribution
 
-<!-- TODO
-include Setup of env, IDE and typical getting started instructions?
+#### Setting Up Your Development Environment
 
--->
+To contribute to this project, you will need to set up your development environment. Here are the steps to get started:
 
-### Improving The Documentation
+1. **Clone the repository**: Start by cloning the project repository to your local machine using the following command:
 
-<!-- TODO
-Updating, improving and correcting the documentation
+```bash
+% git clone https://github.com/GenomicDataInfrastructure/gdi-userportal-rems-synchronizer.git
+```
 
--->
+2. **Install dependencies**: Navigate to the project directory and install the required dependencies using npm. Run the following command:
 
-## Styleguides
+```bash
+% cd gdi-userportal-rems-synchronizer
+% pip install -r requirements.txt
+```
+
+3. **Configure environment variables**: The project may require certain environment variables to be set. Check the project documentation or ask the project team for the required variables and their values.
+
+4. **Set up your IDE**: Open the project in your preferred Integrated Development Environment (IDE). We are using VSCode and you can find initial setup for `.vscode/launch.json`.
+
+5. **Execute the batch process**: Once your environment is set up, you can start the development server to preview and test your changes. Run the following command:
+
+```bash
+python src/main.py
+```
+
+If all the previous steps were followed accordingly, this will start the batch and your REMS will be populated correctly.
+
 
 ### Commit Messages
 
-<!-- TODO
+- Follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
+- Use a concise and descriptive message to summarize the changes made in the commit.
+- Start the message with a verb in the imperative form, such as "Fix", "Add", "Update", etc.
+- Limit the message to 72 characters or less for better readability.
+- Provide additional details in the commit body if necessary.
 
--->
+### Python Styleguide
 
-## Join The Project Team
+All Python code is linted with [Prettier](https://github.com/psf/black).
 
-<!-- TODO -->
+### License and Copyrights
 
-<!-- omit in toc -->
+We are [REUSE](https://reuse.software/) compliant. All files must contain copyrights and license on the header.
 
 ## Attribution
 
