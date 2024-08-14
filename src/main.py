@@ -17,7 +17,7 @@ print(f"CKAN base url: {ckan_base_url}")
 rems_base_url = os.environ.get("REMS_URL", "https://daam.portal.dev.gdi.lu")
 print(f"REMS base url: {rems_base_url}")
 rems_api_key = os.environ.get("REMS_API_KEY", "42")
-print(f"REMS api key: **********")
+print("REMS api key: **********")
 rems_user_id = os.environ.get("REMS_BOT_USER", "owner")
 print(f"REMS user id: {rems_user_id}")
 
