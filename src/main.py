@@ -12,11 +12,9 @@ from rems import (
 )
 import os
 
-ckan_base_url = os.environ.get(
-    "CKAN_URL", "http://catalogue.local.onemilliongenomes.eu"
-)
+ckan_base_url = os.environ.get("CKAN_URL", "https://catalogue.portal.dev.gdi.lu")
 print(f"CKAN base url: {ckan_base_url}")
-rems_base_url = os.environ.get("REMS_URL", "http://daam.local.onemilliongenomes.eu")
+rems_base_url = os.environ.get("REMS_URL", "https://daam.portal.dev.gdi.lu")
 print(f"REMS base url: {rems_base_url}")
 rems_api_key = os.environ.get("REMS_API_KEY", "42")
 print(f"REMS api key: **********")
@@ -49,6 +47,8 @@ while start < count:
     packages = get_packages(start, rows, ckan_base_url)
     for package in packages:
         if "identifier" not in package or package["identifier"] is None:
+            package_id = package["id"]
+            print(f"package[{package_id}] does not have an identifier.")
             continue
         dataset_id = package["identifier"]
         dataset_title = package["title"]

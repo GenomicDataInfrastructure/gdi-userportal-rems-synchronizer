@@ -16,7 +16,7 @@ def create_or_return_organization_in_rems(rems_base_url: str, headers: dict) -> 
     if response.status_code == 200:
         return id
     elif response.status_code != 404:
-        raise Exception(f"Organization found failed: {response.text}")
+        raise Exception(f"Organization retrieval failed: {response.text}")
     response = requests.post(
         url=f"{rems_base_url}/api/organizations/create",
         json={
@@ -39,7 +39,7 @@ def create_or_return_form_in_rems(
         headers=headers,
     )
     if response.status_code != 200:
-        raise Exception(f"Workflow found failed: {response.text}")
+        raise Exception(f"Workflow retrieval failed: {response.text}")
 
     result = [
         form
@@ -101,7 +101,7 @@ def create_or_return_workflow_in_rems(
         headers=headers,
     )
     if response.status_code != 200:
-        raise Exception(f"Workflow found failed: {response.text}")
+        raise Exception(f"Workflow retrieval failed: {response.text}")
 
     result = [
         workflow
@@ -138,7 +138,7 @@ def create_or_return_resource_in_rems(
         headers=headers,
     )
     if response.status_code != 200 or len(response.json()) > 1:
-        raise Exception(f"Resource found failed: {response.text}")
+        raise Exception(f"Resource retrieval failed: {response.text}")
     elif len(response.json()) == 1:
         id = response.json()[0]["id"]
         return id
@@ -171,7 +171,7 @@ def create_or_return_catalogue_item_in_rems(
         headers=headers,
     )
     if response.status_code != 200 or len(response.json()) > 1:
-        raise Exception(f"Catalogue Item found failed: {response.text}")
+        raise Exception(f"Catalogue Item retrieval failed: {response.text}")
     elif len(response.json()) == 1:
         id = response.json()[0]["id"]
         return id
