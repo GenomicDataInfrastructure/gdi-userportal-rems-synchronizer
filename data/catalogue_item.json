@@ -1,0 +1,13 @@
+{
+    "resid": "{DATASET_IDENTIFIER}",
+    "wfid": "{WORKFLOW_ID}",
+    "organization": {
+        "organization/id": "{ORGANIZATION_ID}"
+    },
+    "localizations": {
+        "en": {
+            "title": "{TITLE}"
+        }
+    },
+    "enabled": true
+}

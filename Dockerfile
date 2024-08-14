@@ -8,6 +8,7 @@ USER 0
 WORKDIR /app
 
 COPY src/ /app
+COPY data/ /app/data/
 COPY requirements.txt /app
 
 RUN pip install --no-cache-dir --upgrade -r requirements.txt

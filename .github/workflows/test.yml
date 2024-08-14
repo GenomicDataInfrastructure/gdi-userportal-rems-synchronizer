@@ -14,8 +14,18 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v4
-      - uses: fsfe/reuse-action@v4
-      - uses: psf/black@stable
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          options: "--check --verbose"
-          src: "./src"
+          python-version: "3.12"
+      - name: install dependencies
+        run: pip install -r dev-requirements.txt && pip install -r requirements.txt
+      - name: run pytest
+        run: pytest --cov=. --cov-report xml:coverage.xml
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v3
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: run black
+        run: black --check --verbose src
+      - uses: fsfe/reuse-action@v4
