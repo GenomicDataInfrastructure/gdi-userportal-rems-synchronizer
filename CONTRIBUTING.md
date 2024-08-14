@@ -187,7 +187,7 @@ If all the previous steps were followed accordingly, this will start the batch a
 
 ### Python Styleguide
 
-All Python code is linted with [Prettier](https://github.com/psf/black).
+All Python code is linted with [Black](https://github.com/psf/black).
 
 ### License and Copyrights
 

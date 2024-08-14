@@ -18,9 +18,9 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # GDI User Portal - REMS Synchronizer
 
-The GDI User Portal REMS Synchronizer serves as the data steward-friendly comand line interface for REMS management, responsible to fetch datasets from a CKAN, loading them into REMS.
+The GDI User Portal REMS Synchronizer serves as the data steward-friendly command line interface for REMS management, responsible to fetch datasets from a CKAN, loading them into REMS.
 
-Here, the data steward can easily configure the workflow and form, and replicate it throughout the entire dataset, with zero headacke.
+Here, the data steward can easily configure the workflow and form, and replicate it throughout the entire dataset, with zero headache.
 
 ## Installation
 
@@ -34,12 +34,17 @@ You also have to create a new `.env` file in the root directory, and copy the co
 
 ### Using Docker
 
-Alternatively, you can run the compose file that provides a running instance of the application. Use the following command to run docker-compose:
+Alternatively, you can run the compose file that provides a running instance of the application.
 
-`podman compose up -d`, `docker compose up` or `docker-compose up`, depending on your current setup.
+To start the containers:
+- For Podman: `podman compose up -d`
+- For Docker (new version): `docker compose up -d`
+- For Docker (older version): `docker-compose up -d`
+
+Choose the command that matches your container runtime. We recommend using `podman compose up` for most setups.
 
 ## License
 
 - All original source code is licensed under [Apache-2.0](./LICENSES/Apache-2.0.txt).
-- All documentation is licensed under [CC-BY-4.0](./LICENSES/CC-BY-4.0.txt).
+- All documentation and images are licensed under [CC-BY-4.0](./LICENSES/CC-BY-4.0.txt).
 - For more accurate information, check the individual files.
