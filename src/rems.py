@@ -9,26 +9,26 @@ import hashlib
 def create_or_return_organization_in_rems(rems_base_url: str, headers: dict) -> str:
     name = "Genomic Data Institute"
     short_name = "GDI"
-    id = hashlib.md5(name.encode()).hexdigest()
+    organization_id = hashlib.md5(name.encode()).hexdigest()
     response = requests.get(
-        url=f"{rems_base_url}/api/organizations/{id}", headers=headers
+        url=f"{rems_base_url}/api/organizations/{organization_id}", headers=headers
     )
     if response.status_code == 200:
-        return id
+        return organization_id
     elif response.status_code != 404:
-        raise Exception(f"Organization found failed: {response.text}")
+        raise RuntimeError(f"Organization retrieval failed: {response.text}")
     response = requests.post(
         url=f"{rems_base_url}/api/organizations/create",
         json={
-            "organization/id": id,
+            "organization/id": organization_id,
             "organization/name": {"en": name},
             "organization/short-name": {"en": short_name},
         },
         headers=headers,
     )
     if response.status_code != 200:
-        raise Exception(f"Organization creation failed: {response.text}")
-    return id
+        raise RuntimeError(f"Organization creation failed: {response.text}")
+    return organization_id
 
 
 def create_or_return_form_in_rems(
@@ -39,7 +39,7 @@ def create_or_return_form_in_rems(
         headers=headers,
     )
     if response.status_code != 200:
-        raise Exception(f"Workflow found failed: {response.text}")
+        raise RuntimeError(f"Workflow retrieval failed: {response.text}")
 
     result = [
         form
@@ -48,8 +48,7 @@ def create_or_return_form_in_rems(
     ]
 
     if len(result) > 0:
-        id = result[0]["form/id"]
-        return id
+        return result[0]["form/id"]
 
     response = requests.post(
         url=f"{rems_base_url}/api/forms/create",
@@ -88,9 +87,8 @@ def create_or_return_form_in_rems(
         headers=headers,
     )
     if response.status_code != 200:
-        raise Exception(f"Workflow creation failed: {response.text}")
-    id = response.json()["id"]
-    return id
+        raise RuntimeError(f"Workflow creation failed: {response.text}")
+    return response.json()["id"]
 
 
 def create_or_return_workflow_in_rems(
@@ -101,7 +99,7 @@ def create_or_return_workflow_in_rems(
         headers=headers,
     )
     if response.status_code != 200:
-        raise Exception(f"Workflow found failed: {response.text}")
+        raise RuntimeError(f"Workflow retrieval failed: {response.text}")
 
     result = [
         workflow
@@ -110,8 +108,7 @@ def create_or_return_workflow_in_rems(
     ]
 
     if len(result) > 0:
-        id = result[0]["id"]
-        return id
+        return result[0]["id"]
 
     response = requests.post(
         url=f"{rems_base_url}/api/workflows/create",
@@ -125,9 +122,8 @@ def create_or_return_workflow_in_rems(
         headers=headers,
     )
     if response.status_code != 200:
-        raise Exception(f"Workflow creation failed: {response.text}")
-    id = response.json()["id"]
-    return id
+        raise RuntimeError(f"Workflow creation failed: {response.text}")
+    return response.json()["id"]
 
 
 def create_or_return_resource_in_rems(
@@ -138,10 +134,9 @@ def create_or_return_resource_in_rems(
         headers=headers,
     )
     if response.status_code != 200 or len(response.json()) > 1:
-        raise Exception(f"Resource found failed: {response.text}")
+        raise RuntimeError(f"Resource retrieval failed: {response.text}")
     elif len(response.json()) == 1:
-        id = response.json()[0]["id"]
-        return id
+        return response.json()[0]["id"]
     response = requests.post(
         url=f"{rems_base_url}/api/resources/create",
         json={
@@ -152,9 +147,8 @@ def create_or_return_resource_in_rems(
         headers=headers,
     )
     if response.status_code != 200:
-        raise Exception(f"Resource creation failed: {response.text}")
-    id = response.json()["id"]
-    return id
+        raise RuntimeError(f"Resource creation failed: {response.text}")
+    return response.json()["id"]
 
 
 def create_or_return_catalogue_item_in_rems(
@@ -171,10 +165,9 @@ def create_or_return_catalogue_item_in_rems(
         headers=headers,
     )
     if response.status_code != 200 or len(response.json()) > 1:
-        raise Exception(f"Catalogue Item found failed: {response.text}")
+        raise RuntimeError(f"Catalogue Item retrieval failed: {response.text}")
     elif len(response.json()) == 1:
-        id = response.json()[0]["id"]
-        return id
+        return response.json()[0]["id"]
     response = requests.post(
         url=f"{rems_base_url}/api/catalogue-items/create",
         json={
@@ -187,6 +180,5 @@ def create_or_return_catalogue_item_in_rems(
         headers=headers,
     )
     if response.status_code != 200:
-        raise Exception(f"Catalogue Item creation failed: {response.text}")
-    id = response.json()["id"]
-    return id
+        raise RuntimeError(f"Catalogue Item creation failed: {response.text}")
+    return response.json()["id"]
