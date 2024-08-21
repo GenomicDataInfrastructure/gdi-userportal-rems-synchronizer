@@ -1,0 +1,9 @@
+{
+    "organization/id": "{ORGANIZATION_ID}",
+    "organization/name": {
+        "en": "Genomic Data Infrastructure"
+    },
+    "organization/short-name": {
+        "en": "GDI"
+    }
+}

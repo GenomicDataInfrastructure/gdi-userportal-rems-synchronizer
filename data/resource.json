@@ -1,0 +1,7 @@
+{
+    "resid": "{DATASET_IDENTIFIER}",
+    "organization": {
+        "organization/id": "{ORGANIZATION_ID}"
+    },
+    "licenses": []
+}

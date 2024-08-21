@@ -1,0 +1,46 @@
+{
+    "form/external-title": {
+        "en": "DARREV 1.0"
+    },
+    "form/internal-name": "{FORM_CHECKSUM}",
+    "organization": {
+        "organization/id": "{WORKFLOW_ORGANIZATION_ID)"
+    },
+    "form/fields": [
+        {
+            "field/type": "attachment",
+            "field/title": {
+                "en": "Ethics Approval"
+            },
+            "field/optional": false
+        },
+        {
+            "field/type": "attachment",
+            "field/title": {
+                "en": "Project Description"
+            },
+            "field/optional": false
+        },
+        {
+            "field/type": "attachment",
+            "field/title": {
+                "en": "Data Analysis Plan"
+            },
+            "field/optional": false
+        },
+        {
+            "field/type": "attachment",
+            "field/title": {
+                "en": "Funding Source"
+            },
+            "field/optional": true
+        },
+        {
+            "field/type": "attachment",
+            "field/title": {
+                "en": "Peer Review"
+            },
+            "field/optional": false
+        }
+    ]
+}

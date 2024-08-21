@@ -1,0 +1,15 @@
+{
+    "type": "workflow/default",
+    "organization": {
+        "organization/id": "{WORKFLOW_ORGANIZATION_ID)"
+    },
+    "title": "GDI Default Workflow",
+    "forms": [
+        {
+            "form/id": "{WORKFLOW_FORM_ID}"
+        }
+    ],
+    "voting": {
+        "type": "reviewers-vote"
+    }
+}
