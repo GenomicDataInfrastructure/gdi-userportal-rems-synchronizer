@@ -2,12 +2,13 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-FROM registry.access.redhat.com/ubi9/python-312:1-20.1723128194
+FROM registry.access.redhat.com/ubi9/python-312:1-20.1724035315
 USER 0
 
 WORKDIR /app
 
 COPY src/ /app
+COPY data/ /app/data/
 COPY requirements.txt /app
 
 RUN pip install --no-cache-dir --upgrade -r requirements.txt

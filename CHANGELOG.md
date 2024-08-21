@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+chore: move form and workflow initialization to data/*.json
 chore: migrate base docker image to UBI 9
 doc: update README and CONTRIBUTING.md
 
