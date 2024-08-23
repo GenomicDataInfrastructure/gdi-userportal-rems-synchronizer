@@ -27,7 +27,7 @@ def test_create_or_return_workflow_in_rems_exists(mock_get):
     organization_id = "test-org-id"
     form_id = 456
     workflow_id = create_or_return_workflow_in_rems(
-        organization_id, form_id, rems_base_url, headers
+        organization_id, form_id, rems_base_url, headers, True
     )
 
     # Assert the function returns the correct workflow ID
@@ -37,6 +37,7 @@ def test_create_or_return_workflow_in_rems_exists(mock_get):
     mock_get.assert_called_once_with(
         url=f"{rems_base_url}/api/workflows?disabled=false&archived=false",
         headers=headers,
+        verify=True,
     )
 
 
@@ -65,7 +66,7 @@ def test_create_or_return_workflow_in_rems_create(mock_load_json, mock_get, mock
     organization_id = "test-org-id"
     form_id = 456
     workflow_id = create_or_return_workflow_in_rems(
-        organization_id, form_id, rems_base_url, headers
+        organization_id, form_id, rems_base_url, headers, True
     )
 
     # Assert the function returns the newly created workflow ID
@@ -80,6 +81,7 @@ def test_create_or_return_workflow_in_rems_create(mock_load_json, mock_get, mock
         url=f"{rems_base_url}/api/workflows/create",
         json=expected_workflow,
         headers=headers,
+        verify=True,
     )
 
 
@@ -99,7 +101,7 @@ def test_create_or_return_workflow_in_rems_retrieval_fails(mock_get):
         RuntimeError, match="Workflow retrieval failed: Internal Server Error"
     ):
         create_or_return_workflow_in_rems(
-            organization_id, form_id, rems_base_url, headers
+            organization_id, form_id, rems_base_url, headers, True
         )
 
 
@@ -131,5 +133,5 @@ def test_create_or_return_workflow_in_rems_creation_fails(
     form_id = 456
     with pytest.raises(RuntimeError, match="Workflow creation failed: Bad Request"):
         create_or_return_workflow_in_rems(
-            organization_id, form_id, rems_base_url, headers
+            organization_id, form_id, rems_base_url, headers, True
         )

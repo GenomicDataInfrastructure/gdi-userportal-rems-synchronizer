@@ -38,7 +38,9 @@ def test_create_or_return_organization_in_rems_exists(mock_load_json, mock_get):
     # Call the function with mock parameters
     rems_base_url = "http://mock-rems-instance.com"
     headers = {"Authorization": "Bearer mock_token"}
-    organization_id = create_or_return_organization_in_rems(rems_base_url, headers)
+    organization_id = create_or_return_organization_in_rems(
+        rems_base_url, headers, True
+    )
 
     # Assert that the function returns the correct organization_id
     expected_id = hashlib.md5("Test Organization".encode()).hexdigest()
@@ -48,6 +50,7 @@ def test_create_or_return_organization_in_rems_exists(mock_load_json, mock_get):
     mock_get.assert_called_once_with(
         url=f"{rems_base_url}/api/organizations/{expected_id}",
         headers=headers,
+        verify=True,
     )
 
 
@@ -70,7 +73,9 @@ def test_create_or_return_organization_in_rems_create(
     # Call the function with mock parameters
     rems_base_url = "http://mock-rems-instance.com"
     headers = {"Authorization": "Bearer mock_token"}
-    organization_id = create_or_return_organization_in_rems(rems_base_url, headers)
+    organization_id = create_or_return_organization_in_rems(
+        rems_base_url, headers, True
+    )
 
     # Assert that the function returns the correct organization_id
     expected_id = hashlib.md5("Test Organization".encode()).hexdigest()
@@ -85,6 +90,7 @@ def test_create_or_return_organization_in_rems_create(
         url=f"{rems_base_url}/api/organizations/create",
         json=expected_payload,
         headers=headers,
+        verify=True,
     )
 
 
@@ -107,7 +113,7 @@ def test_create_or_return_organization_in_rems_retrieval_fails(
     with pytest.raises(
         RuntimeError, match="Organization retrieval failed: Internal Server Error"
     ):
-        create_or_return_organization_in_rems(rems_base_url, headers)
+        create_or_return_organization_in_rems(rems_base_url, headers, True)
 
 
 # Test for create_or_return_organization_in_rems when creation fails
@@ -131,4 +137,4 @@ def test_create_or_return_organization_in_rems_creation_fails(
     rems_base_url = "http://mock-rems-instance.com"
     headers = {"Authorization": "Bearer mock_token"}
     with pytest.raises(RuntimeError, match="Organization creation failed: Bad Request"):
-        create_or_return_organization_in_rems(rems_base_url, headers)
+        create_or_return_organization_in_rems(rems_base_url, headers, True)

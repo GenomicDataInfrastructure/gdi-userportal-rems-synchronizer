@@ -27,7 +27,9 @@ def test_create_or_return_form_in_rems_exists(mock_get):
     rems_base_url = "http://mock-rems-instance.com"
     headers = {"Authorization": "Bearer mock_token"}
     organization_id = "test-org-id"
-    form_id = create_or_return_form_in_rems(organization_id, rems_base_url, headers)
+    form_id = create_or_return_form_in_rems(
+        organization_id, rems_base_url, headers, True
+    )
 
     # Assert the function returns the correct form ID
     assert form_id == 123
@@ -36,6 +38,7 @@ def test_create_or_return_form_in_rems_exists(mock_get):
     mock_get.assert_called_once_with(
         url=f"{rems_base_url}/api/forms?disabled=false&archived=false",
         headers=headers,
+        verify=True,
     )
 
 
@@ -62,7 +65,9 @@ def test_create_or_return_form_in_rems_create(mock_load_json, mock_get, mock_pos
     rems_base_url = "http://mock-rems-instance.com"
     headers = {"Authorization": "Bearer mock_token"}
     organization_id = "test-org-id"
-    form_id = create_or_return_form_in_rems(organization_id, rems_base_url, headers)
+    form_id = create_or_return_form_in_rems(
+        organization_id, rems_base_url, headers, True
+    )
 
     # Assert the function returns the newly created form ID
     assert form_id == 456
@@ -82,6 +87,7 @@ def test_create_or_return_form_in_rems_create(mock_load_json, mock_get, mock_pos
         url=f"{rems_base_url}/api/forms/create",
         json=expected_form,
         headers=headers,
+        verify=True,
     )
 
 
@@ -99,7 +105,7 @@ def test_create_or_return_form_in_rems_retrieval_fails(mock_get):
     with pytest.raises(
         RuntimeError, match="Workflow retrieval failed: Internal Server Error"
     ):
-        create_or_return_form_in_rems(organization_id, rems_base_url, headers)
+        create_or_return_form_in_rems(organization_id, rems_base_url, headers, True)
 
 
 # Test when form creation fails with a non-200 status code
@@ -128,4 +134,4 @@ def test_create_or_return_form_in_rems_creation_fails(
     headers = {"Authorization": "Bearer mock_token"}
     organization_id = "test-org-id"
     with pytest.raises(RuntimeError, match="Workflow creation failed: Bad Request"):
-        create_or_return_form_in_rems(organization_id, rems_base_url, headers)
+        create_or_return_form_in_rems(organization_id, rems_base_url, headers, True)

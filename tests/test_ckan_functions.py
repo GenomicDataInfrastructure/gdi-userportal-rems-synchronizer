@@ -31,12 +31,13 @@ def test_get_packages_count(mock_get):
 
     # Call the function with a mock CKAN base URL
     ckan_base_url = "http://mock-ckan-instance.com"
-    count = get_packages_count(ckan_base_url)
+    count = get_packages_count(ckan_base_url, True)
 
     # Assert the function returns the correct count
     assert count == 42
     mock_get.assert_called_once_with(
-        f"{ckan_base_url}/api/3/action/package_search?rows=0"
+        url=f"{ckan_base_url}/api/3/action/package_search?rows=0",
+        verify=True,
     )
 
 
@@ -50,12 +51,13 @@ def test_get_packages(mock_get):
     start = 0
     rows = 2
     ckan_base_url = "http://mock-ckan-instance.com"
-    packages = get_packages(start, rows, ckan_base_url)
+    packages = get_packages(start, rows, ckan_base_url, True)
 
     # Assert the function returns the correct packages
     assert len(packages) == 2
     assert packages[0]["id"] == "package1"
     assert packages[1]["name"] == "Test Package 2"
     mock_get.assert_called_once_with(
-        f"{ckan_base_url}/api/3/action/package_search?rows={rows}&start={start}"
+        url=f"{ckan_base_url}/api/3/action/package_search?rows={rows}&start={start}",
+        verify=True,
     )

@@ -40,6 +40,7 @@ def test_create_or_return_catalogue_item_in_rems_exists(mock_get):
         title,
         rems_base_url,
         headers,
+        True,
     )
 
     # Assert the function returns the correct catalogue item ID
@@ -49,6 +50,7 @@ def test_create_or_return_catalogue_item_in_rems_exists(mock_get):
     mock_get.assert_called_once_with(
         url=f"{rems_base_url}/api/catalogue-items?disabled=false&archived=false&resource={dataset_identifier}",
         headers=headers,
+        verify=True,
     )
 
 
@@ -91,6 +93,7 @@ def test_create_or_return_catalogue_item_in_rems_create(
         title,
         rems_base_url,
         headers,
+        True,
     )
 
     # Assert the function returns the newly created catalogue item ID
@@ -107,6 +110,7 @@ def test_create_or_return_catalogue_item_in_rems_create(
         url=f"{rems_base_url}/api/catalogue-items/create",
         json=expected_catalogue_item,
         headers=headers,
+        verify=True,
     )
 
 
@@ -136,6 +140,7 @@ def test_create_or_return_catalogue_item_in_rems_retrieval_fails(mock_get):
             title,
             rems_base_url,
             headers,
+            True,
         )
 
 
@@ -181,4 +186,5 @@ def test_create_or_return_catalogue_item_in_rems_creation_fails(
             title,
             rems_base_url,
             headers,
+            True,
         )
