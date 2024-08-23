@@ -5,15 +5,17 @@
 import requests
 
 
-def get_packages_count(ckan_base_url: str) -> int:
+def get_packages_count(ckan_base_url: str, verify_ssl: bool) -> int:
     response = requests.get(
-        f"{ckan_base_url}/api/3/action/package_search?rows=0"
+        url=f"{ckan_base_url}/api/3/action/package_search?rows=0",
+        verify=verify_ssl,
     ).json()
     return response["result"]["count"]
 
 
-def get_packages(start, rows, ckan_base_url: str) -> list:
+def get_packages(start, rows, ckan_base_url: str, verify_ssl: bool) -> list:
     response = requests.get(
-        f"{ckan_base_url}/api/3/action/package_search?rows={rows}&start={start}"
+        url=f"{ckan_base_url}/api/3/action/package_search?rows={rows}&start={start}",
+        verify=verify_ssl,
     ).json()
     return response["result"]["results"]

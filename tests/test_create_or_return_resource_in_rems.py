@@ -30,7 +30,7 @@ def test_create_or_return_resource_in_rems_exists(mock_get):
     organization_id = "test-org-id"
     dataset_identifier = "dataset-identifier"
     resource_id = create_or_return_resource_in_rems(
-        organization_id, dataset_identifier, rems_base_url, headers
+        organization_id, dataset_identifier, rems_base_url, headers, True
     )
 
     # Assert the function returns the correct resource ID
@@ -40,6 +40,7 @@ def test_create_or_return_resource_in_rems_exists(mock_get):
     mock_get.assert_called_once_with(
         url=f"{rems_base_url}/api/resources?disabled=false&archived=false&resid={dataset_identifier}",
         headers=headers,
+        verify=True,
     )
 
 
@@ -65,7 +66,7 @@ def test_create_or_return_resource_in_rems_create(mock_load_json, mock_get, mock
     organization_id = "test-org-id"
     dataset_identifier = "dataset-identifier"
     resource_id = create_or_return_resource_in_rems(
-        organization_id, dataset_identifier, rems_base_url, headers
+        organization_id, dataset_identifier, rems_base_url, headers, True
     )
 
     # Assert the function returns the newly created resource ID
@@ -80,6 +81,7 @@ def test_create_or_return_resource_in_rems_create(mock_load_json, mock_get, mock
         url=f"{rems_base_url}/api/resources/create",
         json=expected_resource,
         headers=headers,
+        verify=True,
     )
 
 
@@ -99,7 +101,7 @@ def test_create_or_return_resource_in_rems_retrieval_fails(mock_get):
         RuntimeError, match="Resource retrieval failed: Internal Server Error"
     ):
         create_or_return_resource_in_rems(
-            organization_id, dataset_identifier, rems_base_url, headers
+            organization_id, dataset_identifier, rems_base_url, headers, True
         )
 
 
@@ -128,5 +130,5 @@ def test_create_or_return_resource_in_rems_creation_fails(
     dataset_identifier = "dataset-identifier"
     with pytest.raises(RuntimeError, match="Resource creation failed: Bad Request"):
         create_or_return_resource_in_rems(
-            organization_id, dataset_identifier, rems_base_url, headers
+            organization_id, dataset_identifier, rems_base_url, headers, True
         )

@@ -17,7 +17,9 @@ def load_json(path: str) -> Dict:
         raise ValueError(f"Error loading JSON from {path}: {str(e)}")
 
 
-def create_or_return_organization_in_rems(rems_base_url: str, headers: dict) -> str:
+def create_or_return_organization_in_rems(
+    rems_base_url: str, headers: dict, verify_ssl: bool
+) -> str:
     base_workflow_organization = load_json("./data/workflow_organization.json")
     name = base_workflow_organization["organization/name"]["en"]
     organization_id = hashlib.md5(name.encode()).hexdigest()
@@ -26,7 +28,9 @@ def create_or_return_organization_in_rems(rems_base_url: str, headers: dict) -> 
     workflow_organization["organization/id"] = organization_id
 
     response = requests.get(
-        url=f"{rems_base_url}/api/organizations/{organization_id}", headers=headers
+        url=f"{rems_base_url}/api/organizations/{organization_id}",
+        headers=headers,
+        verify=verify_ssl,
     )
     if response.status_code == 200:
         return organization_id
@@ -36,6 +40,7 @@ def create_or_return_organization_in_rems(rems_base_url: str, headers: dict) -> 
         url=f"{rems_base_url}/api/organizations/create",
         json=workflow_organization,
         headers=headers,
+        verify=verify_ssl,
     )
     if response.status_code != 200:
         raise RuntimeError(f"Organization creation failed: {response.text}")
@@ -43,11 +48,12 @@ def create_or_return_organization_in_rems(rems_base_url: str, headers: dict) -> 
 
 
 def create_or_return_form_in_rems(
-    organization_id: str, rems_base_url: str, headers: dict
+    organization_id: str, rems_base_url: str, headers: dict, verify_ssl: bool
 ) -> int:
     response = requests.get(
         url=f"{rems_base_url}/api/forms?disabled=false&archived=false",
         headers=headers,
+        verify=verify_ssl,
     )
     if response.status_code != 200:
         raise RuntimeError(f"Workflow retrieval failed: {response.text}")
@@ -74,6 +80,7 @@ def create_or_return_form_in_rems(
         url=f"{rems_base_url}/api/forms/create",
         json=form,
         headers=headers,
+        verify=verify_ssl,
     )
     if response.status_code != 200:
         raise RuntimeError(f"Workflow creation failed: {response.text}")
@@ -81,11 +88,16 @@ def create_or_return_form_in_rems(
 
 
 def create_or_return_workflow_in_rems(
-    organization_id: str, form_id: int, rems_base_url: str, headers: dict
+    organization_id: str,
+    form_id: int,
+    rems_base_url: str,
+    headers: dict,
+    verify_ssl: bool,
 ) -> int:
     response = requests.get(
         url=f"{rems_base_url}/api/workflows?disabled=false&archived=false",
         headers=headers,
+        verify=verify_ssl,
     )
     if response.status_code != 200:
         raise RuntimeError(f"Workflow retrieval failed: {response.text}")
@@ -109,6 +121,7 @@ def create_or_return_workflow_in_rems(
         url=f"{rems_base_url}/api/workflows/create",
         json=workflow,
         headers=headers,
+        verify=verify_ssl,
     )
     if response.status_code != 200:
         raise RuntimeError(f"Workflow creation failed: {response.text}")
@@ -116,11 +129,16 @@ def create_or_return_workflow_in_rems(
 
 
 def create_or_return_resource_in_rems(
-    organization_id: str, dataset_identifier: str, rems_base_url: str, headers: dict
+    organization_id: str,
+    dataset_identifier: str,
+    rems_base_url: str,
+    headers: dict,
+    verify_ssl: bool,
 ) -> str:
     response = requests.get(
         url=f"{rems_base_url}/api/resources?disabled=false&archived=false&resid={dataset_identifier}",
         headers=headers,
+        verify=verify_ssl,
     )
     if response.status_code != 200 or len(response.json()) > 1:
         raise RuntimeError(f"Resource retrieval failed: {response.text}")
@@ -137,6 +155,7 @@ def create_or_return_resource_in_rems(
         url=f"{rems_base_url}/api/resources/create",
         json=resource,
         headers=headers,
+        verify=verify_ssl,
     )
     if response.status_code != 200:
         raise RuntimeError(f"Resource creation failed: {response.text}")
@@ -151,10 +170,12 @@ def create_or_return_catalogue_item_in_rems(
     title: str,
     rems_base_url: str,
     headers: dict,
+    verify_ssl: bool,
 ) -> str:
     response = requests.get(
         url=f"{rems_base_url}/api/catalogue-items?disabled=false&archived=false&resource={dataset_identifier}",
         headers=headers,
+        verify=verify_ssl,
     )
     if response.status_code != 200 or len(response.json()) > 1:
         raise RuntimeError(f"Catalogue Item retrieval failed: {response.text}")
@@ -173,6 +194,7 @@ def create_or_return_catalogue_item_in_rems(
         url=f"{rems_base_url}/api/catalogue-items/create",
         json=catalogue_item,
         headers=headers,
+        verify=verify_ssl,
     )
 
     if response.status_code != 200:
