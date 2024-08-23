@@ -43,6 +43,34 @@ To start the containers:
 
 Choose the command that matches your container runtime. We recommend using `podman compose up` for most setups.
 
+## Setting up
+
+* create bot user in REMS
+```
+POST <REMS_URL>/api/users/create
+x-rems-api-key: existing-api-key
+x-rems-user-id: owner-id
+Content-Type: application/json
+
+{
+  "userid": "<BOT_USER_ID>",
+  "name": "<BOT_USER_NAME>",
+  "email": "<BOT_USER_EMAIL>"
+}
+
+* add a new api-key for this user
+```
+xxxxxxx:/rems# java -Dconfig.rems=config/config.edn -jar rems.jar grant-role owner <BOT_USER_ID>
+xxxxxxx:/rems# java -Dconfig.rems=config/config.edn -jar rems.jar api-key add <TEST_BOT_API_KEY>
+xxxxxxx:/rems# java -Dconfig.rems=config/config.edn -jar rems.jar api-key set-users <TEST_BOT_API_KEY> <BOT_USER_ID>
+xxxxxxx:/rems# java -Dconfig.rems=config/config.edn -jar rems.jar api-key allow <TEST_BOT_API_KEY> any '/api/organizations.*'
+xxxxxxx:/rems# java -Dconfig.rems=config/config.edn -jar rems.jar api-key allow <TEST_BOT_API_KEY> any '/api/forms.*'
+xxxxxxx:/rems# java -Dconfig.rems=config/config.edn -jar rems.jar api-key allow <TEST_BOT_API_KEY> any '/api/workflows.*'
+xxxxxxx:/rems# java -Dconfig.rems=config/config.edn -jar rems.jar api-key allow <TEST_BOT_API_KEY> any '/api/resources.*'
+xxxxxxx:/rems# java -Dconfig.rems=config/config.edn -jar rems.jar api-key allow <TEST_BOT_API_KEY> any '/api/catalogue-items.*'
+xxxxxxx:/rems# java -Dconfig.rems=config/config.edn -jar rems.jar api-key allow <TEST_BOT_API_KEY> any '/api/licenses.*'
+```
+
 ## License
 
 - All original source code is licensed under [Apache-2.0](./LICENSES/Apache-2.0.txt).
