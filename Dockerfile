@@ -25,4 +25,4 @@ RUN chown -R 1001:1001 ./
 
 USER 1001
 
-CMD ["supercronic", "-debug", "crontab"]
+CMD ["/usr/local/bin/supercronic", "-debug", "/app/crontab"]
