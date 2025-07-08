@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-FROM registry.access.redhat.com/ubi9/python-312:9.6-1751535180
+FROM registry.access.redhat.com/ubi9/python-312-minimal:9.6-1751461507
 USER 0
 
 WORKDIR /app
