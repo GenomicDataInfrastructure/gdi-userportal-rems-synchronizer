@@ -12,6 +12,28 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v1.3.3] - 2025-07-08
+
+### Added
+- feat:(ART-14066) update release plan (#83) by @jadzlnds in 05e66b0
+
+
+### Changed
+- chore: change python base image by @Bruno Pacheco in 18807cf
+- chore(deps): update dependency pytest-cov to v6.2.1 by @Renovate Bot in 0a20437
+- chore(deps): update dependency pytest to v8.4.1 by @Renovate Bot in cd4d88a
+- chore(deps): update aquasecurity/trivy-action action to v0.32.0 by @Renovate Bot in 2d344b7
+- chore(deps): update dependency requests to v2.32.4 [security] by @Renovate Bot in d1b11a5
+- chore(deps): update registry.access.redhat.com/ubi9/python-312 docker tag to v9.6-1751535180 by @Renovate Bot in f32d081
+- chore(deps): update registry.access.redhat.com/ubi9/python-312 docker tag to v9.5-1743088199 by @Renovate Bot in 2df3de2
+- chore(deps): update registry.access.redhat.com/ubi9/python-312 docker tag to v9.5-1742197730 by @Renovate Bot in 5d88fbe
+- chore(deps): update aquasecurity/trivy-action action to v0.30.0 by @Renovate Bot in 0fd44e6
+- chore(deps): update dependency pytest to v8.3.5 by @Renovate Bot in f22d6e6
+- chore(deps): update sonarsource/sonarcloud-github-action action to v5 by @Renovate Bot in 0be30ca
+- chore(deps): update registry.access.redhat.com/ubi9/python-312 docker tag to v9.5-1739797362 by @Renovate Bot in f62454b
+- chore(deps): update registry.access.redhat.com/ubi9/python-312 docker tag to v9.5-1739191330 by @Renovate Bot in 6abb4c2
+
+
 ## [v1.3.2] - 2025-04-04
 
 ### Changed
