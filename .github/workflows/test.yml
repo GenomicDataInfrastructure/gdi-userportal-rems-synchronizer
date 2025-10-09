@@ -23,7 +23,7 @@ jobs:
       - name: run pytest
         run: pytest --cov=. --cov-report xml:coverage.xml
       - name: SonarCloud Scan
-        uses: SonarSource/sonarqube-scan-action@v5.3.1
+        uses: SonarSource/sonarqube-scan-action@v6
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       - name: run black
