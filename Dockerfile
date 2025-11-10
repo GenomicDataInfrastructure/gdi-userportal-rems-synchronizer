@@ -7,6 +7,9 @@ USER 0
 
 WORKDIR /app
 
+# Update system packages to fix security vulnerabilities
+RUN microdnf update -y && microdnf clean all
+
 COPY src/ /app
 COPY data/ /app/data/
 COPY requirements.txt /app
