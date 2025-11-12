@@ -28,4 +28,4 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       - name: run black
         run: black --check --verbose src
-      - uses: fsfe/reuse-action@v5
+      - uses: fsfe/reuse-action@v6
