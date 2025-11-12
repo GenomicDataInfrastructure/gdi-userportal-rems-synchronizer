@@ -3,6 +3,6 @@
 # SPDX-License-Identifier: Apache-2.0
 
 black==25.11.0
-pytest==8.4.1
+pytest==9.0.0
 requests-mock==1.12.1
-pytest-cov==7.0.0
+pytest-cov==6.3.0
