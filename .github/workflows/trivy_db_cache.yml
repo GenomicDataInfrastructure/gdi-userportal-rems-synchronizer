@@ -40,7 +40,7 @@ jobs:
           rm javadb.tar.gz
 
       - name: Cache DBs
-        uses: actions/cache/save@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
+        uses: actions/cache/save@caa296126883cff596d87d8935842f9db880ef25 # v5
         with:
           path: ${{ github.workspace }}/.cache/trivy
           key: cache-trivy-${{ steps.date.outputs.date }}
