@@ -3,3 +3,4 @@
 # SPDX-License-Identifier: Apache-2.0
 
 requests==2.34.2
+certifi==2026.10.19
