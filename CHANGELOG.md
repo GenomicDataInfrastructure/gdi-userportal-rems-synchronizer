@@ -12,6 +12,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v1.3.6] - 2026-10-24
+
+### Fixed
+- fix(security): bump supercronic to v0.2.51 and verify its checksum by @Bruno Pacheco in 0bd984a
+
+
 ## [v1.3.3] - 2025-07-08
 
 ### Added
